@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Connect with CSI | Computer Society of India Student Chapter, SVPCET</title>
+<meta name="description" content="Connect with the CSI Student Chapter, Department of Information Technology, SVPCET.">
+<link rel="icon" href="csi logo.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#052B5F;--deep:#075DB8;--electric:#008CFF;--cyan:#00C6FF;--light:#EAF7FF;--text:#10243E;--muted:#4B6280}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;color:var(--text);background:#fff;overflow-x:hidden;line-height:1.5}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:4px;border-radius:12px}
+
+/* ---------- Background ---------- */
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:linear-gradient(180deg,#fff,#F3FAFF 60%,#EAF7FF)}
+.bg::after{content:"";position:absolute;inset:-56px;background-image:linear-gradient(rgba(0,140,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(0,140,255,.07) 1px,transparent 1px);background-size:56px 56px;animation:grid 12s linear infinite;-webkit-mask-image:radial-gradient(ellipse at 50% 40%,#000,transparent 75%);mask-image:radial-gradient(ellipse at 50% 40%,#000,transparent 75%)}
+@keyframes grid{to{transform:translate(56px,56px)}}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;will-change:transform}
+.b1{width:520px;height:520px;top:-140px;right:-100px;background:radial-gradient(circle,rgba(0,198,255,.55),transparent 70%);animation:drift 18s ease-in-out infinite}
+.b2{width:600px;height:600px;bottom:-200px;left:-160px;background:radial-gradient(circle,rgba(7,93,184,.4),transparent 70%);animation:drift 22s ease-in-out infinite reverse}
+.b3{width:380px;height:380px;top:45%;left:38%;background:radial-gradient(circle,rgba(0,140,255,.28),transparent 70%);animation:drift 26s ease-in-out infinite}
+@keyframes drift{50%{transform:translate(60px,40px) scale(1.12)}}
+#particles{position:absolute;inset:0;width:100%;height:100%}
+.mglow{position:absolute;width:540px;height:540px;left:0;top:0;margin:-270px 0 0 -270px;border-radius:50%;background:radial-gradient(circle,rgba(0,198,255,.2),transparent 65%);opacity:0;transition:opacity .6s;will-change:transform}
+.mglow.on{opacity:1}
+.mark{position:absolute;top:50%;left:50%;width:min(110vmin,1000px);aspect-ratio:1;opacity:.05;transform:translate(calc(-50% + var(--mx,0)*-26px),calc(-50% + var(--my,0)*-26px));animation:float 14s ease-in-out infinite}
+.mark img{width:100%;height:100%;object-fit:contain;display:block}
+@keyframes float{50%{margin-top:-18px}}
+
+/* ---------- Layout ---------- */
+.wrap{position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:0 28px}
+.hero{min-height:100vh;display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center;padding:40px 0 80px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 0 rgba(0,198,255,.6);animation:pulse 2s infinite;flex:none}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(0,198,255,0)}100%{box-shadow:0 0 0 0 rgba(0,198,255,0)}}
+h1{margin:0 0 22px;font-size:clamp(3.1rem,8.2vw,6.6rem);line-height:.98;font-weight:900;letter-spacing:-.045em;color:var(--navy)}
+.g{background:linear-gradient(135deg,var(--navy),var(--deep) 40%,var(--cyan));background-size:200% 200%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:shift 6s ease-in-out infinite;padding-right:.04em}
+@keyframes shift{50%{background-position:100% 50%}}
+.org{font-size:clamp(1.05rem,2vw,1.45rem);font-weight:800;color:var(--deep);letter-spacing:.02em;text-transform:uppercase}
+.dept{margin-top:6px;font-weight:600;font-size:clamp(.95rem,1.5vw,1.1rem)}
+.lead{margin-top:20px;max-width:520px;font-size:clamp(1rem,1.5vw,1.15rem);color:var(--muted);line-height:1.7}
+.cue{display:inline-flex;align-items:center;gap:12px;margin-top:34px;font-weight:600;color:var(--navy)}
+.cue i{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#fff;border:1px solid rgba(0,140,255,.3);box-shadow:0 6px 18px rgba(0,140,255,.18);animation:bob 1.8s ease-in-out infinite;color:var(--electric)}
+.cue svg{width:18px;height:18px}
+@keyframes bob{50%{transform:translateY(6px)}}
+
+/* hero entrance sequence */
+.h{animation:up .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0s)}
+@keyframes up{from{opacity:0;transform:translateY(28px)}}
+.stage.h{animation-name:pop;animation-duration:1.2s}
+@keyframes pop{from{opacity:0;transform:scale(.7)}}
+
+/* ---------- Logo composition ---------- */
+.stagebox{display:grid;place-items:center;transform:translate(calc(var(--mx,0)*16px),calc(var(--my,0)*16px))}
+.stage{position:relative;width:min(100%,540px);aspect-ratio:1}
+.halo{position:absolute;inset:14%;border-radius:50%;background:radial-gradient(circle,rgba(0,198,255,.55),rgba(0,140,255,.18) 55%,transparent 72%);filter:blur(24px);animation:breathe 5s ease-in-out infinite}
+@keyframes breathe{50%{transform:scale(1.12);opacity:.8}}
+.frame{position:absolute;inset:17%;border-radius:50%;padding:9px;background:linear-gradient(135deg,rgba(255,255,255,.95),rgba(190,232,255,.6));border:1px solid rgba(255,255,255,.9);box-shadow:0 30px 70px rgba(5,43,95,.28),0 0 0 8px rgba(0,198,255,.12),0 0 60px rgba(0,198,255,.35);animation:float2 7s ease-in-out infinite}
+@keyframes float2{50%{transform:translateY(-14px)}}
+.frame img{width:100%;height:100%;object-fit:cover;object-position:50% 46%;border-radius:50%;display:block;background:#fff}
+.orbit{position:absolute;border-radius:50%;border:1px solid rgba(0,140,255,.28);animation:spin var(--t,40s) linear infinite}
+.o1{inset:4%}.o2{inset:-3%;--t:60s;animation-direction:reverse;border-style:dashed;border-color:rgba(0,140,255,.2)}
+.o3{inset:10%;--t:32s;border-color:rgba(0,198,255,.3)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.orbit>span{position:absolute;transform:translate(-50%,-50%);display:grid;place-items:center;font:700 .82rem/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--deep);animation:spin var(--t,40s) linear infinite reverse}
+.o2>span{animation-direction:normal}
+.chip{padding:8px 11px;border-radius:12px;background:rgba(255,255,255,.9);border:1px solid rgba(0,140,255,.25);box-shadow:0 8px 20px rgba(0,140,255,.2)}
+.pt{width:10px;height:10px;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px var(--cyan)}
+.pt.s{width:6px;height:6px;background:var(--electric)}
+.bin{opacity:.7;font-size:.7rem}
+
+/* ---------- Connect section ---------- */
+.connect{padding:40px 0 110px}
+.sec-head{text-align:center;max-width:680px;margin:0 auto 54px}
+.label{display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:.16em;color:var(--electric);padding:7px 14px;border-radius:999px;background:rgba(0,140,255,.09)}
+h2.title{margin:18px 0 14px;font-size:clamp(2.2rem,5vw,3.6rem);font-weight:900;letter-spacing:-.035em;color:var(--navy);line-height:1.05;text-transform:uppercase}
+.sec-head p{color:var(--muted);font-size:1.08rem;line-height:1.7}
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;grid-auto-rows:minmax(300px,auto)}
+.cell{min-width:0}
+.c-li{grid-column:span 7}.c-web{grid-column:span 5}.c-ig{grid-column:span 5}.c-mag{grid-column:span 7}
+.rv{opacity:0;transform:translateY(34px) scale(.97);filter:blur(8px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1),filter .8s ease;transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none;filter:none}
+
+.card{--ty:0px;position:relative;display:flex;flex-direction:column;justify-content:space-between;height:100%;min-height:300px;padding:34px;border-radius:30px;overflow:hidden;isolation:isolate;border:1px solid rgba(0,140,255,.2);background:linear-gradient(160deg,rgba(255,255,255,.92),rgba(226,244,255,.8));box-shadow:0 12px 34px rgba(5,43,95,.09),inset 0 1px 0 #fff,inset 0 0 40px rgba(0,198,255,.08);transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty));transition:transform .25s ease-out,box-shadow .35s,border-color .35s;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);will-change:transform}
+.card::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(380px circle at var(--x,50%) var(--y,50%),rgba(0,198,255,.32),transparent 62%);opacity:0;transition:opacity .35s}
+.card::after{content:"";position:absolute;top:-10%;left:-70%;width:40%;height:120%;z-index:0;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-20deg);transition:left 0s}
+.card:hover,.card:focus-visible{--ty:-10px;border-color:rgba(0,198,255,.75);box-shadow:0 28px 60px rgba(0,140,255,.28),0 0 0 1px rgba(0,198,255,.35),inset 0 0 50px rgba(0,198,255,.14)}
+.card:hover::before,.card:focus-visible::before{opacity:1}
+.card:hover::after,.card:focus-visible::after{left:130%;transition:left .95s ease}
+.card>*{position:relative;z-index:1}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.ico{width:72px;height:72px;border-radius:22px;display:grid;place-items:center;background:linear-gradient(135deg,var(--deep),var(--electric));color:#fff;box-shadow:0 12px 28px rgba(0,140,255,.4),inset 0 1px 0 rgba(255,255,255,.4);transition:transform .4s cubic-bezier(.2,.8,.3,1.4)}
+.ico svg{width:36px;height:36px;transition:transform .8s ease}
+.card:hover .ico{transform:scale(1.1) rotate(-3deg)}
+.card h3{font-size:clamp(1.5rem,2.4vw,2rem);font-weight:800;letter-spacing:-.02em;color:var(--navy);text-transform:uppercase}
+.card p{margin-top:8px;max-width:400px;color:var(--muted);font-size:1rem;line-height:1.6}
+.act{width:52px;height:52px;border-radius:50%;flex:none;display:grid;place-items:center;background:#fff;color:var(--electric);border:1px solid rgba(0,140,255,.3);box-shadow:0 8px 20px rgba(0,140,255,.2);transition:transform .35s,background .35s,color .35s}
+.act svg{width:22px;height:22px;transition:transform .35s}
+a.card:hover .act,a.card:focus-visible .act{background:var(--electric);color:#fff;transform:scale(1.08)}
+a.card:hover .act svg,a.card:focus-visible .act svg{transform:translateX(5px)}
+.deco{position:absolute!important;z-index:0!important;pointer-events:none}
+
+/* pill */
+.soon{display:inline-flex;align-items:center;gap:9px;padding:9px 15px;border-radius:999px;font-size:.72rem;font-weight:800;letter-spacing:.12em;color:#3D5B85;background:rgba(255,255,255,.85);border:1px solid rgba(0,140,255,.35);box-shadow:0 0 22px rgba(0,198,255,.28);white-space:nowrap}
+.soon .dot{width:7px;height:7px;background:var(--electric)}
+.card.off{cursor:default}
+
+/* LinkedIn */
+.li{color:#fff;border-color:rgba(0,198,255,.4);background:linear-gradient(135deg,#052B5F,#075DB8 55%,#008CFF)}
+.li h3{color:#fff}.li p{color:rgba(255,255,255,.85)}
+.li .ico{background:#fff;color:#0A66C2;box-shadow:0 12px 30px rgba(0,0,0,.28)}
+.li .act{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.4);box-shadow:none}
+.li:hover .act,.li:focus-visible .act{background:#fff!important;color:#0A66C2!important}
+.li .big{right:-40px;top:-30px;width:300px;height:300px;color:#fff;opacity:.09;transform:rotate(-12deg);transition:transform .8s}
+.li:hover .big{transform:rotate(-4deg) scale(1.08)}
+.li .orb{border-radius:50%;filter:blur(30px);background:rgba(0,198,255,.55);width:200px;height:200px;left:-60px;bottom:-70px;animation:drift 12s ease-in-out infinite}
+.fp{width:7px;height:7px;border-radius:50%;background:#7FE3FF;box-shadow:0 0 12px #7FE3FF;animation:rise var(--t,7s) ease-in infinite;animation-delay:var(--dl,0s);opacity:0}
+@keyframes rise{0%{transform:translateY(0);opacity:0}20%{opacity:.9}100%{transform:translateY(-150px);opacity:0}}
+
+/* Website */
+.web{background:linear-gradient(160deg,#F4FBFF,#D9F0FF)}
+.web .grid{inset:0;background-image:linear-gradient(rgba(0,140,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(0,140,255,.12) 1px,transparent 1px);background-size:28px 28px;animation:grid 8s linear infinite;-webkit-mask-image:radial-gradient(circle at 85% 90%,#000,transparent 65%);mask-image:radial-gradient(circle at 85% 90%,#000,transparent 65%)}
+.web .ring{right:-70px;bottom:-70px;width:250px;height:250px;border-radius:50%;border:1.5px dashed rgba(0,140,255,.4);animation:spin 24s linear infinite}
+.web .ring::after{content:"";position:absolute;top:8px;left:50%;width:12px;height:12px;border-radius:50%;background:var(--cyan);box-shadow:0 0 16px var(--cyan)}
+.web .ring.r2{width:170px;height:170px;right:-30px;bottom:-30px;animation-direction:reverse;border-style:solid;border-color:rgba(0,198,255,.35)}
+.web .glow{right:-50px;bottom:-50px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,rgba(0,198,255,.5),transparent 70%);transition:transform .6s}
+.web:hover .glow{transform:scale(1.5)}
+.web:hover .ico svg{transform:rotate(90deg)}
+
+/* Instagram */
+.ig{border:2px solid transparent;background:linear-gradient(#fff,#F1FAFF) padding-box,linear-gradient(120deg,#F58529,#DD2A7B,#8134AF,#008CFF,#F58529) border-box;background-size:100% 100%,300% 100%;animation:bd 7s linear infinite}
+@keyframes bd{to{background-position:0 0,300% 0}}
+.ig .ico{background:linear-gradient(45deg,#FEDA75,#FA7E1E,#D62976,#962FBF,#4F5BD5);background-size:200% 200%;transition:transform .4s cubic-bezier(.2,.8,.3,1.4),background-position .8s}
+.ig:hover .ico{background-position:100% 100%}
+.ig .orb{right:-50px;top:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(245,133,41,.4),rgba(221,42,123,.3) 45%,rgba(129,52,175,.15) 70%,transparent 72%);filter:blur(6px);animation:float2 6s ease-in-out infinite}
+.ig .orb.o2{right:70px;top:110px;width:70px;height:70px;animation-duration:8s;animation-direction:reverse;opacity:.8}
+
+/* Magazine */
+.mag{background:linear-gradient(160deg,#fff,#E3F4FF)}
+.sheet{width:120px;height:154px;border-radius:10px;background:linear-gradient(#fff,#EAF7FF);border:1px solid rgba(0,140,255,.3);box-shadow:0 14px 30px rgba(0,140,255,.2);animation:sheet 7s ease-in-out infinite}
+.sheet::before{content:"";position:absolute;inset:16px 14px auto;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--electric),var(--cyan));box-shadow:0 20px 0 -2px rgba(0,140,255,.25),0 38px 0 -2px rgba(0,140,255,.25),0 56px 0 -2px rgba(0,140,255,.25),0 74px 0 -2px rgba(0,140,255,.25)}
+.s1{right:50px;top:26px;--r:10deg}.s2{right:130px;top:60px;--r:-8deg;animation-delay:-2s;opacity:.85}.s3{right:14px;top:104px;--r:18deg;animation-delay:-4s;opacity:.65}
+@keyframes sheet{0%,100%{transform:rotate(var(--r)) translateY(0)}50%{transform:rotate(calc(var(--r) + 5deg)) translateY(-14px)}}
+.mag:hover .ico svg{transform:scale(1.08)}
+.page{transform-origin:12px 12px;animation:flip 4s ease-in-out infinite}
+@keyframes flip{50%{transform:scaleX(.82)}}
+
+/* ---------- Footer ---------- */
+footer{position:relative;z-index:1;text-align:center;padding:36px 20px 44px;border-top:1px solid rgba(0,140,255,.15);background:rgba(255,255,255,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+footer strong{display:block;color:var(--navy);font-weight:800}
+footer span{display:block;margin-top:4px;color:var(--muted);font-size:.92rem}
+footer em{display:block;margin-top:14px;font-style:normal;font-weight:700;font-size:.85rem;letter-spacing:.14em;background:linear-gradient(90deg,var(--deep),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1024px){
+  .hero{grid-template-columns:1fr;text-align:center;padding:40px 0 60px;min-height:auto;gap:36px}
+  .lead{margin-left:auto;margin-right:auto}
+  .stage{width:min(100%,460px)}
+  .c-li,.c-mag{grid-column:span 12}.c-web,.c-ig{grid-column:span 6}
+}
+@media (max-width:680px){
+  .wrap{padding:0 18px}
+  .bento{grid-template-columns:1fr;gap:18px;grid-auto-rows:auto}
+  .cell{grid-column:1/-1!important}
+  .card{min-height:260px;padding:26px;border-radius:26px}
+  .ico{width:62px;height:62px;border-radius:18px}.ico svg{width:30px;height:30px}
+    .sec-head{margin-bottom:36px}
+  .sheet{transform:scale(.8);transform-origin:top right}
+  .connect{padding-bottom:80px}
+}
+@media (max-width:380px){.orbit>span.chip{display:none}}
+@media (hover:none){.card:hover{--ty:0px}.card:active{--ty:-3px;border-color:rgba(0,198,255,.75)}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none;filter:none}
+  .fp{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="bg" aria-hidden="true">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="mark"><img src="csi logo.jpeg" alt=""></div>
+  <canvas id="particles"></canvas>
+  <div class="mglow" id="mglow"></div>
+</div>
+
+<main class="wrap">
+  <!-- HERO -->
+  <header class="hero">
+    <div class="copy">
+      <h1 class="h" style="--d:.4s">Connect<br>with <span class="g">CSI</span></h1>
+      <p class="org h" style="--d:.6s">Computer Society of India Student Chapter</p>
+      <p class="dept h" style="--d:.7s">Department of Information Technology, SVPCET</p>
+      <p class="lead h" style="--d:.85s">Connect with the CSI Student Chapter and explore our digital platforms, professional community, activities and publications.</p>
+      <a class="cue h" style="--d:1s" href="#connect" aria-label="Explore our platforms, scroll to platform links">Explore our platforms
+        <i aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></i>
+      </a>
+    </div>
+
+    <div class="stagebox">
+      <div class="stage h" style="--d:.9s">
+        <div class="halo"></div>
+        <div class="orbit o2" aria-hidden="true">
+          <span class="chip" style="left:50%;top:0">&lt;/&gt;</span>
+          <span class="chip" style="left:100%;top:50%">{ }</span>
+          <span class="pt" style="left:50%;top:100%"></span>
+          <span class="pt s" style="left:0;top:50%"></span>
+        </div>
+        <div class="orbit o1" aria-hidden="true">
+          <span class="bin" style="left:85.4%;top:14.6%">1011</span>
+          <span class="pt s" style="left:14.6%;top:14.6%"></span>
+          <span class="chip" style="left:14.6%;top:85.4%">01</span>
+          <span class="bin" style="left:85.4%;top:85.4%">0110</span>
+        </div>
+        <div class="orbit o3" aria-hidden="true">
+          <span class="pt" style="left:50%;top:0"></span>
+          <span class="bin" style="left:100%;top:50%">101</span>
+          <span class="pt s" style="left:25%;top:93.3%"></span>
+        </div>
+        <div class="frame"><img src="csi logo.jpeg" alt="Computer Society of India Student Chapter, Department of IT, SVPCET logo"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONNECT -->
+  <section class="connect" id="connect" aria-labelledby="connect-title">
+    <div class="sec-head rv">
+      <span class="label">OUR DIGITAL PRESENCE</span>
+      <h2 class="title" id="connect-title">Stay Connected</h2>
+      <p>Explore our official platforms and stay updated with everything happening at CSI Student Chapter.</p>
+    </div>
+
+    <div class="bento">
+
+      <!-- LinkedIn -->
+      <div class="cell c-li rv" style="--d:.05s">
+        <a class="card li" href="https://www.linkedin.com/in/csi-svpcet-b5b5b0380/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: follow our professional updates, achievements and activities (opens in a new tab)">
+          <svg class="deco big" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          <span class="deco orb"></span>
+          <span class="deco fp" style="left:55%;bottom:40px;--dl:0s"></span>
+          <span class="deco fp" style="left:70%;bottom:20px;--dl:2s;--t:9s"></span>
+          <span class="deco fp" style="left:82%;bottom:60px;--dl:4s;--t:6s"></span>
+          <div class="top">
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></span>
+            <span class="act" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+          <div><h3>LinkedIn</h3><p>Follow our professional updates, achievements and activities.</p></div>
+        </a>
+      </div>
+
+      <!-- Website -->
+      <div class="cell c-web rv" style="--d:.2s">
+        <div class="card web off" role="group" aria-label="Official Website, coming soon">
+          <span class="deco grid"></span><span class="deco glow"></span><span class="deco ring"></span><span class="deco ring r2"></span>
+          <div class="top">
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><ellipse cx="12" cy="12" rx="4" ry="9.5"/><path d="M2.5 12h19M4 7.500h16M4 16.500h16"/></svg></span>
+            <span class="soon"><i class="dot"></i>COMING SOON</span>
+          </div>
+          <div><h3>Official Website</h3><p>Visit our official CSI Student Chapter website.</p></div>
+        </div>
+      </div>
+
+      <!-- Instagram -->
+      <div class="cell c-ig rv" style="--d:.1s">
+        <a class="card ig" href="https://www.instagram.com/csi_it_svpcet/" target="_blank" rel="noopener noreferrer" aria-label="Instagram: follow us for events, activities, announcements and campus moments (opens in a new tab)">
+          <span class="deco orb"></span><span class="deco orb o2"></span>
+          <div class="top">
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5.500"/><circle cx="12" cy="12" r="4.200"/><circle cx="17.500" cy="6.500" r="1.100" fill="currentColor" stroke="none"/></svg></span>
+            <span class="act" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+          <div><h3>Instagram</h3><p>Follow us for events, activities, announcements and campus moments.</p></div>
+        </a>
+      </div>
+
+      <!-- Magazine -->
+      <div class="cell c-mag rv" style="--d:.25s">
+        <div class="card mag off" role="group" aria-label="CSI Magazine, coming soon">
+          <span class="deco sheet s1"></span><span class="deco sheet s2"></span><span class="deco sheet s3"></span>
+          <span class="deco fp" style="left:48%;bottom:30px;--dl:1s"></span>
+          <span class="deco fp" style="left:62%;bottom:50px;--dl:3s;--t:9s"></span>
+          <div class="top">
+            <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.500C10 5 7 4.500 3 5v13.500c4-.5 7 0 9 1.500V6.500z"/><g class="page"><path d="M12 6.500C14 5 17 4.500 21 5v13.500c-4-.5-7 0-9 1.500"/></g><path d="M6 9h3.500M6 12h3.500M15 9h3M15 12h3"/></svg></span>
+            <span class="soon"><i class="dot"></i>COMING SOON</span>
+          </div>
+          <div><h3>CSI Magazine</h3><p>Explore our student magazine, articles and publications.</p></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <strong>CSI Student Chapter</strong>
+  <span>Department of Information Technology, SVPCET</span>
+  <em>CONNECT • LEARN • INNOVATE</em>
+</footer>
+
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+  var root = document.documentElement;
+
+  /* Scroll reveal */
+  var rv = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:.15, rootMargin:'0px 0px -40px 0px'});
+    rv.forEach(function(el){ io.observe(el); });
+  } else { rv.forEach(function(el){ el.classList.add('in'); }); }
+
+  /* Particles */
+  var cv = document.getElementById('particles'), ctx = cv.getContext('2d'), P = [], W, H, dpr, raf, running = false;
+  function size(){
+    dpr = Math.min(devicePixelRatio || 1, 2);
+    W = innerWidth; H = innerHeight;
+    cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    var n = Math.round(Math.min(60, Math.max(18, W*H/26000)));
+    P = [];
+    for (var i=0;i<n;i++) P.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2+1,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25});
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for (var i=0;i<P.length;i++){
+      var p=P[i]; p.x+=p.vx; p.y+=p.vy;
+      if(p.x<-10)p.x=W+10; if(p.x>W+10)p.x=-10; if(p.y<-10)p.y=H+10; if(p.y>H+10)p.y=-10;
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.283); ctx.fillStyle='rgba(0,140,255,.45)'; ctx.fill();
+      for (var j=i+1;j<P.length;j++){
+        var q=P[j], dx=p.x-q.x, dy=p.y-q.y, d=dx*dx+dy*dy;
+        if(d<12000){ ctx.strokeStyle='rgba(0,140,255,'+(0.13*(1-d/12000))+')'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke(); }
+      }
+    }
+    raf = requestAnimationFrame(draw);
+  }
+  function start(){ if(!running && !reduce){ running=true; raf=requestAnimationFrame(draw); } }
+  function stop(){ running=false; cancelAnimationFrame(raf); }
+  size(); if(reduce){ draw(); cancelAnimationFrame(raf); } else start();
+  var rt; addEventListener('resize', function(){ clearTimeout(rt); rt=setTimeout(size,200); });
+  document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : start(); });
+
+  /* Mouse: glow follow + logo parallax */
+  if (fine && !reduce) {
+    var gl = document.getElementById('mglow'), tx=0, ty=0, cx=0, cy=0, on=false;
+    addEventListener('mousemove', function(e){
+      tx=e.clientX; ty=e.clientY;
+      root.style.setProperty('--mx', (e.clientX/innerWidth-.5).toFixed(3));
+      root.style.setProperty('--my', (e.clientY/innerHeight-.5).toFixed(3));
+      if(!on){ on=true; gl.classList.add('on'); cx=tx; cy=ty; }
+    }, {passive:true});
+    (function loop(){ cx+=(tx-cx)*.06; cy+=(ty-cy)*.06; gl.style.transform='translate3d('+cx+'px,'+cy+'px,0)'; requestAnimationFrame(loop); })();
+
+    /* Card tilt + cursor light */
+    document.querySelectorAll('.card').forEach(function(c){
+      c.addEventListener('mousemove', function(e){
+        var r=c.getBoundingClientRect(), px=(e.clientX-r.left)/r.width, py=(e.clientY-r.top)/r.height;
+        c.style.setProperty('--x',(px*100)+'%'); c.style.setProperty('--y',(py*100)+'%');
+        c.style.setProperty('--ry',((px-.5)*10).toFixed(2)+'deg');
+        c.style.setProperty('--rx',(-(py-.5)*10).toFixed(2)+'deg');
+      });
+      c.addEventListener('mouseleave', function(){
+        c.style.removeProperty('--rx'); c.style.removeProperty('--ry');
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>
